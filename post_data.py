@@ -17,7 +17,7 @@ import pandas as pd
 from sklearn.utils import resample
 
 # Import data
-df = pd.read_csv(r'D:\User\dataset\norway_new_car_sales_by_month.csv')
+df = pd.read_csv(r'data_set\norway_new_car_sales_by_month.csv')
 # Original Series
 y = df['Quantity']
 print(y)
