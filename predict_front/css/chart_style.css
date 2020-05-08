@@ -1,0 +1,42 @@
+* {
+    padding: 0px;
+    margin: 0px;
+    font-family: arial;
+    /* font-size: 13px;*/
+}
+
+#header {
+    background-color: black;
+    width: 1854px;
+    height: 30px;
+}
+
+#items {
+    width: 250px;
+    min-height: 1000px;
+    background-color: #222222;
+    float: left;
+}
+
+#page-wapper {
+    width: 1604px;
+    min-height: 1000px;
+    background-image: url("../photo-of-people-near-wooden-table-3184418.jpg");
+    background-position: center center;
+    background-size: cover;
+    float: left;
+}
+
+#menu li a {
+    padding: 30px 80px 30px 5px;
+    font-size: 20px;
+    color: white;
+    margin: 0px;
+    width: 233px;
+}
+
+#menu li a:hover,
+#menu li a:focus {
+    outline: none;
+    background-color: #000 !important;
+}

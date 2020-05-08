@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!----Bootstrap------>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <!----<script src="js/bootstrap.min.js"></script>-->
+    <!-----jquery----->
+    <link rel="stylesheet" href="js/jquery.js">
+    <link rel="stylesheet" href="css/chart_style.css">
+    <!-----jsChart-->
+    <script src="https://www.chartjs.org/dist/master/Chart.min.js"></script>
+    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+</head>
+
+<body>
+    <canvas id="myChart" class="chart"></canvas>
+    <script>
+        const xquantity = [];
+        const ymonth = [];
+        ChartIt();
+        async function ChartIt() {
+
+            await getData();
+            const ctx = document.getElementById('myChart').getContext('2d');
+            const myChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: ymonth,
+                    datasets: [{
+                        label: 'Customer Lifetime Value',
+                        borderColor: 'blue',
+                        fill: false,
+                        data: xquantity,
+                        backgroundColor: 'blue'
+                    }],
+                    borderWidth: 2
+                },
+                options: {
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero: true
+                            }
+                        }]
+                    }
+                }
+            });
+        }
+
+        async function getData() {
+            const response = await fetch('test_chuanhoa.csv');
+            const data = await response.text();
+            const table = data.split('\n').slice(1, 13);
+            table.forEach((row) => {
+                const columns = row.split(',');
+                const Month = columns[0];
+                ymonth.push(Month);
+                const Quantity = columns[1];
+                xquantity.push(Quantity);
+                console.log(Month, Quantity);
+            });
+
+        }
+    </script>
+</body>
+
+</html>
